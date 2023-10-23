@@ -1,0 +1,29 @@
+{% extends "template.html" %}
+
+{% block content %}
+<div>
+    <h1>Profile</h1>
+    <p>Hello, <span>{{ user.email }}</span>. See claims from OIDC
+    </p>
+
+</div>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Claim</th>
+        <th>Value</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for key, claim in user.claims() %}
+    <tr>
+        <td>{{ key }}</td>
+        <td id="claim-{{ key }}">
+            {{ claim }}
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock content %}

@@ -1,0 +1,21 @@
+{% extends "template.html" %}
+
+{% block content %}
+<h1>OIDC Application</h1>
+
+{% if current_user.is_authenticated %}
+<div>
+    <p>User: <span>{{current_user.email}}</span></p>
+    <p>Authentication successful</p>
+    <p>See <a href="{{ url_for('profile') }}">Profile</a> to view OAuth data</p>
+</div>
+{% else %}
+<div>
+    <p>Hello! Log in to see the data</p>
+</div>
+
+<form method="get" action="login">
+    <button id="login-button" class="btn btn-primary" type="submit">Login</button>
+</form>
+{% endif %}
+{% endblock content %}
